@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express(); // new express application
 
 const dbConnection = sqlite.open("./db/banco.sqlite", { Promise });
-const port = 3000; // port being listened, 80:http, 443:https
+const port = process.env.PORT || 3000; // port being listened, 80:http, 443:https
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // use public if route not defined
