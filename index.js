@@ -17,7 +17,7 @@ app.use("/admin", (req, res, next) => {
   else res.send("Not Allowed");
 });
 
-app.set("views", __dirname + "/views");
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.resolve(__dirname, "public"))); // use public if route not defined
 app.use(bodyParser.urlencoded({ extended: true }));
