@@ -8,11 +8,14 @@ const app = express(); // new express application
 
 const dbConnection = sqlite.open(
   path.resolve(__dirname, "db", "banco.sqlite"),
-  {
-    Promise
-  }
+  { Promise }
 );
 const port = process.env.PORT || 3000; // port being listened, 80:http, 443:https
+
+app.use("/admin", (req, res, next) => {
+  if (req.hostname === "localhost") next();
+  else res.send("Not Allowed");
+});
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
