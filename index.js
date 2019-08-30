@@ -14,8 +14,9 @@ const dbConnection = sqlite.open(
 );
 const port = process.env.PORT || 3000; // port being listened, 80:http, 443:https
 
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.static("public")); // use public if route not defined
+app.use(express.static(path.join(__dirname, "public"))); // use public if route not defined
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
