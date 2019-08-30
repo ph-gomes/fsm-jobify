@@ -2,9 +2,13 @@ const express = require("express"); // responsible for handling http requests
 const sqlite = require("sqlite");
 const bodyParser = require("body-parser");
 
+const path = require("path");
+
 const app = express(); // new express application
 
-const dbConnection = sqlite.open("./db/banco.sqlite", { Promise });
+const dbConnection = sqlite.open(path.resolve(_dirname, "db", "banco.sqlite"), {
+  Promise
+});
 const port = process.env.PORT || 3000; // port being listened, 80:http, 443:https
 
 app.set("view engine", "ejs");
